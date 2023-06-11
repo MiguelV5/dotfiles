@@ -39,6 +39,7 @@ fi
 #
 # only applies to FEDORA(vm), so UBUNTU uses the following:
 
+# (ONLY this one in particular is commonly used):
 # Ctrl+Backspace
 backward-kill-dir () {
     local WORDCHARS=${WORDCHARS/\/}
