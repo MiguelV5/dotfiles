@@ -58,13 +58,6 @@
     // Really useful for detecting weird unicode characters in the code
     "editor.unicodeHighlight.includeComments": true,
     // ====================== EXTENSIONS CFG & MISC ====================== //
-    // DISC RICH PRESCENCE //
-    // (Dont export this to dotfiles repo)
-    "discord.removeRemoteRepository": true,
-    "discord.detailsDebugging": "Editing {file_name}",
-    "discord.lowerDetailsDebugging": "Workspace:   🐧",
-    "discord.lowerDetailsEditing": "Workspace:   🐧",
-    "discord.lowerDetailsNoWorkspaceFound": "Workspace:   🐧",
     // GITLENS //
     "gitlens.currentLine.enabled": false,
     "gitlens.hovers.currentLine.over": "line",
