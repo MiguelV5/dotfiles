@@ -1,0 +1,82 @@
+{
+    // ====================== INIT ====================== //
+    "telemetry.telemetryLevel": "off",
+    "update.mode": "manual",
+    "workbench.startupEditor": "none",
+    "editor.mouseWheelZoom": true,
+    "vsicons.dontShowNewVersionMessage": true,
+    // ====================== EDIT & WORKSPACE ====================== //
+    "editor.wordWrap": "on",
+    "editor.multiCursorModifier": "ctrlCmd",
+    "editor.mouseWheelScrollSensitivity": 2,
+    "output.smartScroll.enabled": false,
+    "editor.formatOnSave": true,
+    "notebook.output.textLineLimit": 50,
+    "workbench.layoutControl.enabled": false,
+    "explorer.confirmDelete": false,
+    "editor.detectIndentation": false,
+    "workbench.editor.enablePreview": false,
+    "files.associations": {
+        "*.asm": "sparc",
+        "*.S": "asm-intel-x86-generic"
+    },
+    // ====================== VISUALS ====================== //
+    "workbench.iconTheme": "vscode-icons",
+    "editor.fontFamily": "'Fira Code', monospace,'Fira Mono'",
+    "editor.bracketPairColorization.enabled": true,
+    "editor.guides.bracketPairs": true,
+    "workbench.colorCustomizations": {
+        "titleBar.activeBackground": "#131925",
+        "titleBar.activeForeground": "#ffffff",
+        "statusBar.background": "#242D40",
+        "statusBar.noFolderBackground": "#242D40",
+        "statusBar.debuggingBackground": "#242D40",
+        "activityBar.foreground": "#aeeaff",
+        "tab.activeBackground": "#131925",
+        "activityBar.background": "#131925",
+        "sideBar.background": "#131925",
+        "editor.background": "#131925",
+        "editorGroupHeader.tabsBackground": "#172235",
+        "tab.border": "#2B474F",
+        "tab.inactiveBackground": "#172235"
+    }, /*
+    "workbench.colorCustomizations": {
+        "editor.selectionHighlightBorder": "#ffffff0e"
+    },*/
+    "editor.tokenColorCustomizations": {
+        "comments": "#6C736C"
+    },
+    "editor.fontLigatures": true,
+    "window.titleBarStyle": "custom",
+    "workbench.editor.untitled.hint": "hidden",
+    "explorer.confirmDragAndDrop": false,
+    "editor.cursorBlinking": "phase",
+    "editor.cursorSmoothCaretAnimation": "on",
+    "workbench.list.smoothScrolling": false,
+    "editor.smoothScrolling": true,
+    "editor.fontSize": 17,
+    // Really useful for detecting weird unicode characters in the code
+    "editor.unicodeHighlight.includeComments": true,
+    // ====================== EXTENSIONS CFG & MISC ====================== //
+    // DISC RICH PRESCENCE //
+    // (Dont export this to dotfiles repo)
+    "discord.removeRemoteRepository": true,
+    "discord.detailsDebugging": "Editing {file_name}",
+    "discord.lowerDetailsDebugging": "Workspace:   🐧",
+    "discord.lowerDetailsEditing": "Workspace:   🐧",
+    "discord.lowerDetailsNoWorkspaceFound": "Workspace:   🐧",
+    // GITLENS //
+    "gitlens.currentLine.enabled": false,
+    "gitlens.hovers.currentLine.over": "line",
+    "editor.inlineSuggest.enabled": true,
+    // PY FORMATTER //
+    "python.linting.enabled": true,
+    "python.linting.flake8Enabled": true,
+    "python.linting.lintOnSave": true,
+    "python.formatting.provider": "autopep8",
+    "errorLens.excludeBySource": [
+        "flake8(E501)"
+    ],
+    // GIT //
+    "git.openRepositoryInParentFolders": "never",
+}

@@ -1,0 +1,9 @@
+[user]
+	name = MiguelV5
+	email = mvasquezj@fi.uba.ar
+[core]
+	editor = code
+[init]
+	defaultBranch = master
+[alias]
+	logtree = log --abbrev-commit --oneline --decorate --all --graph
