@@ -2,6 +2,8 @@
 
 ---
 
+<br>
+
 Personal set of configurations (aliases, settings, init, etc) to setup my system and some tools I frequently use.
 
 <br>
@@ -16,4 +18,3 @@ Personal set of configurations (aliases, settings, init, etc) to setup my system
 
 ---
 
-<br>
