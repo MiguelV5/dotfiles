@@ -1,2 +1,5 @@
+bind ^Z undo main
+bind ^Y redo main
+set tabsize 4
+set softwrap
 set linenumbers
-
