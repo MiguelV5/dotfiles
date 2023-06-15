@@ -1,9 +1,9 @@
 [flake8]
-extend-ignore = E501
+extend-ignore = E501, F403, F405
 exclude =
     # No need to traverse our git directory
     .git,
     # There's no value in checking cache directories
-    __pycache__,
+    __pycache__
 
     
