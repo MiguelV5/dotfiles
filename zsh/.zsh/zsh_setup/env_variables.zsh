@@ -8,3 +8,8 @@ export PATH=$PATH:$HOME/.local/bin
 
 # intellij path:
 export PATH=$PATH:$HOME/.intellij/bin
+
+# Install ruby gems to ~/gems
+export GEM_HOME=$HOME/gems
+
+export PATH=$PATH:$HOME/gems/bin
