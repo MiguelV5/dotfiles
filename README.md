@@ -11,6 +11,7 @@ Personal set of configurations (aliases, settings, init, etc) to setup my system
 <p align="center">
 <a href="#/">
   <img height="400" src="https://raw.githubusercontent.com/MiguelV5/MiguelV5/main/misc/mice_gears_efejoart.gif">
+<!--- Art credit goes to its author: https://efejota.artstation.com/  --->
 </a>
 </p>
 
