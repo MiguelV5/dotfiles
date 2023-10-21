@@ -13,3 +13,10 @@ export PATH=$PATH:$HOME/.intellij/bin
 export GEM_HOME=$HOME/gems
 
 export PATH=$PATH:$HOME/gems/bin
+
+# pnpm
+export PNPM_HOME="/home/miguelv5/.local/share/pnpm"
+case ":$PATH:" in
+	*":$PNPM_HOME:"*) ;;
+	*) export PATH="$PNPM_HOME:$PATH" ;;
+esac
