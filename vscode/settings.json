@@ -20,6 +20,8 @@
         "*.asm": "sparc",
         "*.S": "asm-intel-x86-generic"
     },
+    "workbench.editor.empty.hint": "hidden",
+    "workbench.sideBar.location": "right",
     // ====================== VISUALS ====================== //
     "workbench.iconTheme": "vscode-icons",
     "editor.fontFamily": "'Fira Code', monospace,'Fira Mono'",
@@ -48,7 +50,6 @@
     },
     "editor.fontLigatures": true,
     "window.titleBarStyle": "custom",
-    "workbench.editor.untitled.hint": "hidden",
     "explorer.confirmDragAndDrop": false,
     "editor.cursorBlinking": "phase",
     "editor.cursorSmoothCaretAnimation": "on",
@@ -72,4 +73,22 @@
     ],
     // GIT //
     "git.openRepositoryInParentFolders": "never",
+    "terminal.integrated.env.linux": {},
+    // WEB-RELATED FORMATTERS //
+    "svelte.enable-ts-plugin": true,
+    "[jsonc]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "[typescript]": {
+        "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
+    },
+    "[html]": {
+        "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
+    },
+    "[svelte]": {
+        "editor.defaultFormatter": "svelte.svelte-vscode"
+    },
 }
