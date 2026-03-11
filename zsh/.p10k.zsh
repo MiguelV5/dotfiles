@@ -26,7 +26,7 @@
   # The list of segments shown on the left. Fill it with the most important segments.
   typeset -g POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
     # =========================[ Line #1 ]=========================
-    os_icon                 # os identifier
+    # os_icon                 # os identifier
     dir                     # current directory
     vcs                     # git status
     # =========================[ Line #2 ]=========================
@@ -49,9 +49,9 @@
     nodeenv                 # node.js environment (https://github.com/ekalinin/nodeenv)
     kubecontext             # current kubernetes context (https://kubernetes.io/)
     context                 # user@hostname
-    time                    # current time
     # =========================[ Line #2 ]=========================
     newline
+    time                    # current time
   )
 
   # Defines character set used by powerlevel10k. It's best to let `p10k configure` set it for you.
@@ -402,14 +402,14 @@
   typeset -g POWERLEVEL9K_STATUS_OK=true
   typeset -g POWERLEVEL9K_STATUS_OK_VISUAL_IDENTIFIER_EXPANSION='✔'
   typeset -g POWERLEVEL9K_STATUS_OK_FOREGROUND=2
-  typeset -g POWERLEVEL9K_STATUS_OK_BACKGROUND=0
+  typeset -g POWERLEVEL9K_STATUS_OK_BACKGROUND=16
 
   # Status when some part of a pipe command fails but the overall exit status is zero. It may look
   # like this: 1|0.
   typeset -g POWERLEVEL9K_STATUS_OK_PIPE=true
   typeset -g POWERLEVEL9K_STATUS_OK_PIPE_VISUAL_IDENTIFIER_EXPANSION='✔'
   typeset -g POWERLEVEL9K_STATUS_OK_PIPE_FOREGROUND=2
-  typeset -g POWERLEVEL9K_STATUS_OK_PIPE_BACKGROUND=0
+  typeset -g POWERLEVEL9K_STATUS_OK_PIPE_BACKGROUND=16
 
   # Status when it's just an error code (e.g., '1'). No need to show it if prompt_char is enabled as
   # it will signify error by turning red.
@@ -438,7 +438,7 @@
   typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_FOREGROUND=15
   typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_BACKGROUND=240
   # Show duration of the last command if takes at least this many seconds.
-  typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_THRESHOLD=3
+  typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_THRESHOLD=0
   # Show this many fractional digits. Zero means round to seconds.
   typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_PRECISION=2
   # Duration format: 1d 2h 3m 4s.
@@ -817,7 +817,7 @@
   # If set to true, time will update when you hit enter. This way prompts for the past
   # commands will contain the start times of their commands as opposed to the default
   # behavior where they contain the end times of their preceding commands.
-  typeset -g POWERLEVEL9K_TIME_UPDATE_ON_COMMAND=false
+  typeset -g POWERLEVEL9K_TIME_UPDATE_ON_COMMAND=true
   # Custom icon.
   # typeset -g POWERLEVEL9K_TIME_VISUAL_IDENTIFIER_EXPANSION='⭐'
   # Custom prefix.
@@ -864,7 +864,7 @@
   #   - always:   Trim down prompt when accepting a command line.
   #   - same-dir: Trim down prompt when accepting a command line unless this is the first command
   #               typed after changing current working directory.
-  typeset -g POWERLEVEL9K_TRANSIENT_PROMPT=always
+  typeset -g POWERLEVEL9K_TRANSIENT_PROMPT=off
 
   # Instant prompt mode.
   #
@@ -884,9 +884,25 @@
   # really need it.
   typeset -g POWERLEVEL9K_DISABLE_HOT_RELOAD=true
 
+  # =============== CUSTOM TRANSIENT:
+  # This function runs every time you press Enter. 
+  # It defines what stays in your terminal history.
+  function p10k-on-pre-prompt() {
+    # Show empty line if it's the first prompt in the TTY.
+    [[ $P9K_TTY == old ]] && p10k display 'empty_line'=show
+    # Show the first prompt line.
+    p10k display '1/left/dir'=show '1/left/vcs'=show '1/gap'=show '1/right/status'=show '1/right/command_execution_time'=show '2/left/prompt_char'=show '2/right/time'=show
+  }
+
+  function p10k-on-post-prompt() { 
+    p10k display '1/left/dir'=hide '1/left/vcs'=hide   
+  }
+
+  
   # If p10k is already loaded, reload configuration.
   # This works even with POWERLEVEL9K_DISABLE_HOT_RELOAD=true.
   (( ! $+functions[p10k] )) || p10k reload
+
 }
 
 # Tell `p10k configure` which file it should overwrite.
