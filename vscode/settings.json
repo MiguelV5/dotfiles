@@ -10,11 +10,9 @@
     "editor.multiCursorModifier": "ctrlCmd",
     "editor.mouseWheelScrollSensitivity": 2,
     "output.smartScroll.enabled": false,
-    "editor.formatOnSave": true,
     "notebook.output.textLineLimit": 50,
     "workbench.layoutControl.enabled": false,
     "explorer.confirmDelete": false,
-    "editor.detectIndentation": false,
     "workbench.editor.enablePreview": false,
     "files.associations": {
         "*.asm": "sparc",
@@ -23,6 +21,9 @@
     "workbench.editor.empty.hint": "hidden",
     "workbench.sideBar.location": "right",
     // ====================== VISUALS ====================== //
+    "workbench.secondarySideBar.defaultVisibility": "hidden",
+    "terminal.integrated.fontFamily": "MesloLGS Nerd Font",
+    "workbench.colorTheme": "Dark Modern",
     "workbench.iconTheme": "vscode-icons",
     "editor.fontFamily": "'Fira Code', monospace,'Fira Mono'",
     "editor.bracketPairColorization.enabled": true,
@@ -30,21 +31,28 @@
     "workbench.colorCustomizations": {
         "titleBar.activeBackground": "#131925",
         "titleBar.activeForeground": "#ffffff",
-        "statusBar.background": "#242D40",
-        "statusBar.noFolderBackground": "#242D40",
-        "statusBar.debuggingBackground": "#242D40",
-        "activityBar.foreground": "#aeeaff",
-        "tab.activeBackground": "#131925",
+        "statusBar.background": "#131925",
+        "statusBar.noFolderBackground": "#131925",
+        "statusBar.debuggingBackground": "#131925",
+        "activityBar.foreground": "#84a5fb",
+        "activityBar.activeBorder": "#84a5fb",
         "activityBar.background": "#131925",
         "sideBar.background": "#131925",
-        "editor.background": "#131925",
-        "editorGroupHeader.tabsBackground": "#172235",
-        "tab.border": "#2B474F",
-        "tab.inactiveBackground": "#172235"
-    }, /*
-    "workbench.colorCustomizations": {
-        "editor.selectionHighlightBorder": "#ffffff0e"
-    },*/
+        "tab.activeBackground": "#0f111a",
+        "editor.background": "#0f111a",
+        "editorGroupHeader.tabsBackground": "#131925",
+        "tab.border": "#465785",
+        "tab.activeBorderTop": "#84a5fb",
+        "tab.inactiveBackground": "#172235",
+        "tab.inactiveForeground": "#ffffff",
+        "tab.activeForeground": "#ffffff",
+        "button.background": "#84a5fb",
+        "button.foreground": "#000000",
+        "button.hoverBackground": "#738cca",
+        "inputOption.activeBorder": "#738cca",
+        "inputOption.activeBackground": "#5a6d9c",
+        "inputOption.activeForeground": "#ffffff",
+    },
     "editor.tokenColorCustomizations": {
         "comments": "#6C736C"
     },
@@ -64,12 +72,18 @@
     "gitlens.hovers.currentLine.over": "line",
     "editor.inlineSuggest.enabled": true,
     // PY FORMATTER //
-    "python.linting.enabled": true,
-    "python.linting.flake8Enabled": true,
-    "python.linting.lintOnSave": true,
-    "python.formatting.provider": "autopep8",
-    "errorLens.excludeBySource": [
-        "flake8(E501)"
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.flake8"
+    },
+    "black-formatter.args": [
+        "--line-length",
+        "110",
+        "--skip-string-normalization",
+        "--skip-magic-trailing-comma",
+    ],
+    "flake8.args": [
+        "--max-line-length=128",
+        "--ignore=E501,E231,E402,F841,F401,E302,E305,E117,E303,W293,W292,W291,W391,W605",
     ],
     // GIT //
     "git.openRepositoryInParentFolders": "never",
@@ -88,7 +102,17 @@
     "[html]": {
         "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
     },
-    "[svelte]": {
-        "editor.defaultFormatter": "svelte.svelte-vscode"
+    "extensions.autoUpdate": "onlyEnabledExtensions",
+    "update.showReleaseNotes": false,
+    "github.copilot.editor.enableAutoCompletions": true,
+    "extensions.ignoreRecommendations": true,
+    "chat.editing.alwaysSaveWithGeneratedChanges": true,
+    "github.copilot.advanced": {
+        "authPermissions": "minimal"
+    },
+    "editor.formatOnSave": true,
+    "azureTerraform.survey": {
+        "surveyPromptDate": "2025-08-21T21:03:58.542Z",
+        "surveyPromptIgnoredCount": 1
     },
 }
