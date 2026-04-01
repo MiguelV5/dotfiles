@@ -27,6 +27,19 @@
   typeset -g POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
     # =========================[ Line #1 ]=========================
     # os_icon                 # os identifier
+    virtualenv              # python virtual environment (https://docs.python.org/3/library/venv.html)
+    pyenv                   # python environment (https://github.com/pyenv/pyenv)
+    goenv                   # go environment (https://github.com/syndbg/goenv)
+    # nvm                     # node.js version from nvm (https://github.com/nvm-sh/nvm)
+    node_version            # node.js version
+    rbenv                   # ruby version from rbenv (https://github.com/rbenv/rbenv)
+    rvm                     # ruby version from rvm (https://rvm.io)
+    fvm                     # flutter version management (https://github.com/leoafarias/fvm)
+    luaenv                  # lua version from luaenv (https://github.com/cehoffman/luaenv)
+    jenv                    # java version from jenv (https://github.com/jenv/jenv)
+    plenv                   # perl version from plenv (https://github.com/tokuhirom/plenv)
+    kubecontext             # current kubernetes context (https://kubernetes.io/)
+
     dir                     # current directory
     vcs                     # git status
     # =========================[ Line #2 ]=========================
@@ -43,14 +56,18 @@
     status                  # exit code of the last command
     command_execution_time  # duration of the last command
     background_jobs         # presence of background jobs
-    virtualenv              # python virtual environment (https://docs.python.org/3/library/venv.html)
-    pyenv                   # python environment (https://github.com/pyenv/pyenv)
-    goenv                   # go environment (https://github.com/syndbg/goenv)
-    nodeenv                 # node.js environment (https://github.com/ekalinin/nodeenv)
-    kubecontext             # current kubernetes context (https://kubernetes.io/)
-    context                 # user@hostname
+    # nodeenv                 # node.js environment (https://github.com/ekalinin/nodeenv)
+    # go_version              # go version (https://golang.org)
+    # rust_version            # rustc version (https://www.rust-lang.org)
+    # dotnet_version          # .NET version (https://dotnet.microsoft.com)
+    # php_version             # php version (https://www.php.net/)
+    # laravel_version         # laravel php framework version (https://laravel.com/)
+    # java_version            # java version (https://www.java.com/)
+    # package                 # name@version from package.json (https://docs.npmjs.com/files/package.json)
+    # context                 # user@hostname
     # =========================[ Line #2 ]=========================
-    newline
+    newline   
+
     time                    # current time
   )
 
@@ -550,10 +567,10 @@
 
   ###[ virtualenv: python virtual environment (https://docs.python.org/3/library/venv.html) ]###
   # Python virtual environment color.
-  typeset -g POWERLEVEL9K_VIRTUALENV_FOREGROUND=0
-  typeset -g POWERLEVEL9K_VIRTUALENV_BACKGROUND=4
-  # Don't show Python version next to the virtual environment name.
-  typeset -g POWERLEVEL9K_VIRTUALENV_SHOW_PYTHON_VERSION=false
+  typeset -g POWERLEVEL9K_VIRTUALENV_FOREGROUND=4
+  typeset -g POWERLEVEL9K_VIRTUALENV_BACKGROUND=16
+  # show Python version next to the virtual environment name.
+  typeset -g POWERLEVEL9K_VIRTUALENV_SHOW_PYTHON_VERSION=true
   # If set to "false", won't show virtualenv if pyenv is already shown.
   # If set to "if-different", won't show virtualenv if it's the same as pyenv.
   typeset -g POWERLEVEL9K_VIRTUALENV_SHOW_WITH_PYENV=false
@@ -561,14 +578,16 @@
   typeset -g POWERLEVEL9K_VIRTUALENV_{LEFT,RIGHT}_DELIMITER=
   # Custom icon.
   # typeset -g POWERLEVEL9K_VIRTUALENV_VISUAL_IDENTIFIER_EXPANSION='⭐'
+  # Hide the name of the virtualenv completely
+  typeset -g POWERLEVEL9K_VIRTUALENV_CONTENT_EXPANSION='${P9K_CONTENT%% *}'
 
   #####################[ anaconda: conda environment (https://conda.io/) ]######################
   # <--- DELETED BY CUSTOMIZATION ---> SEE DOCS
 
   ################[ pyenv: python environment (https://github.com/pyenv/pyenv) ]################
   # Pyenv color.
-  typeset -g POWERLEVEL9K_PYENV_FOREGROUND=0
-  typeset -g POWERLEVEL9K_PYENV_BACKGROUND=4
+  typeset -g POWERLEVEL9K_PYENV_FOREGROUND=27
+  typeset -g POWERLEVEL9K_PYENV_BACKGROUND=16
   # Hide python version if it doesn't come from one of these sources.
   typeset -g POWERLEVEL9K_PYENV_SOURCES=(shell local global)
   # If set to false, hide python version if it's the same as global:
@@ -594,8 +613,8 @@
 
   ################[ goenv: go environment (https://github.com/syndbg/goenv) ]################
   # Goenv color.
-  typeset -g POWERLEVEL9K_GOENV_FOREGROUND=0
-  typeset -g POWERLEVEL9K_GOENV_BACKGROUND=4
+  typeset -g POWERLEVEL9K_GOENV_FOREGROUND=14
+  typeset -g POWERLEVEL9K_GOENV_BACKGROUND=16
   # Hide go version if it doesn't come from one of these sources.
   typeset -g POWERLEVEL9K_GOENV_SOURCES=(shell local global)
   # If set to false, hide go version if it's the same as global:
@@ -607,15 +626,30 @@
   # typeset -g POWERLEVEL9K_GOENV_VISUAL_IDENTIFIER_EXPANSION='⭐'
 
   ##########[ nodenv: node.js version from nodenv (https://github.com/nodenv/nodenv) ]##########
-  # <--- DELETED BY CUSTOMIZATION ---> SEE DOCS
+  # Nodenv color.
+  typeset -g POWERLEVEL9K_NODENV_FOREGROUND=71
+  typeset -g POWERLEVEL9K_NODENV_BACKGROUND=16
+  # Hide node version if it doesn't come from one of these sources.
+  typeset -g POWERLEVEL9K_NODENV_SOURCES=(shell local global)
+  # If set to false, hide node version if it's the same as global:
+  # $(nodenv version-name) == $(nodenv global).
+  typeset -g POWERLEVEL9K_NODENV_PROMPT_ALWAYS_SHOW=true
+  # If set to false, hide node version if it's equal to "system".
+  typeset -g POWERLEVEL9K_NODENV_SHOW_SYSTEM=true
+  # Custom icon.
+  # typeset -g POWERLEVEL9K_NODENV_VISUAL_IDENTIFIER_EXPANSION='⭐'
 
   ##############[ nvm: node.js version from nvm (https://github.com/nvm-sh/nvm) ]###############
-  # <--- DELETED BY CUSTOMIZATION ---> SEE DOCS
+  # Nvm color.
+  typeset -g POWERLEVEL9K_NVM_FOREGROUND=71
+  typeset -g POWERLEVEL9K_NVM_BACKGROUND=16
+  # Custom icon.
+  # typeset -g POWERLEVEL9K_NVM_VISUAL_IDENTIFIER_EXPANSION='⭐'
 
   ############[ nodeenv: node.js environment (https://github.com/ekalinin/nodeenv) ]############
   # Nodeenv color.
   typeset -g POWERLEVEL9K_NODEENV_FOREGROUND=2
-  typeset -g POWERLEVEL9K_NODEENV_BACKGROUND=0
+  typeset -g POWERLEVEL9K_NODEENV_BACKGROUND=16
   # Don't show Node version next to the environment name.
   typeset -g POWERLEVEL9K_NODEENV_SHOW_NODE_VERSION=false
   # Separate environment name from Node version only with a space.
@@ -624,7 +658,13 @@
   # typeset -g POWERLEVEL9K_NODEENV_VISUAL_IDENTIFIER_EXPANSION='⭐'
 
   ##############################[ node_version: node.js version ]###############################
-  # <--- DELETED BY CUSTOMIZATION ---> SEE DOCS
+  # Node version color.
+  typeset -g POWERLEVEL9K_NODE_VERSION_FOREGROUND=71
+  typeset -g POWERLEVEL9K_NODE_VERSION_BACKGROUND=16
+  # Show node version only when in a directory tree containing package.json.
+  typeset -g POWERLEVEL9K_NODE_VERSION_PROJECT_ONLY=true
+  # Custom icon.
+  # typeset -g POWERLEVEL9K_NODE_VERSION_VISUAL_IDENTIFIER_EXPANSION='⭐'
 
   #######################[ go_version: go version (https://golang.org) ]########################
   # <--- DELETED BY CUSTOMIZATION ---> SEE DOCS
@@ -642,7 +682,18 @@
   # <--- DELETED BY CUSTOMIZATION ---> SEE DOCS
 
   #############[ rbenv: ruby version from rbenv (https://github.com/rbenv/rbenv) ]##############
-  # <--- DELETED BY CUSTOMIZATION ---> SEE DOCS
+  # Rbenv color.
+  typeset -g POWERLEVEL9K_RBENV_FOREGROUND=168
+  typeset -g POWERLEVEL9K_RBENV_BACKGROUND=16
+  # Hide ruby version if it doesn't come from one of these sources.
+  typeset -g POWERLEVEL9K_RBENV_SOURCES=(shell local global)
+  # If set to false, hide ruby version if it's the same as global:
+  # $(rbenv version-name) == $(rbenv global).
+  typeset -g POWERLEVEL9K_RBENV_PROMPT_ALWAYS_SHOW=false
+  # If set to false, hide ruby version if it's equal to "system".
+  typeset -g POWERLEVEL9K_RBENV_SHOW_SYSTEM=true
+  # Custom icon.
+  # typeset -g POWERLEVEL9K_RBENV_VISUAL_IDENTIFIER_EXPANSION='⭐'
 
   ####################[ java_version: java version (https://www.java.com/) ]####################
   # <--- DELETED BY CUSTOMIZATION ---> SEE DOCS
@@ -651,25 +702,79 @@
   # <--- DELETED BY CUSTOMIZATION ---> SEE DOCS
 
   #######################[ rvm: ruby version from rvm (https://rvm.io) ]########################
-  # <--- DELETED BY CUSTOMIZATION ---> SEE DOCS
+  # Rvm color.
+  typeset -g POWERLEVEL9K_RVM_FOREGROUND=168
+  typeset -g POWERLEVEL9K_RVM_BACKGROUND=16
+  # Don't show @gemset at the end.
+  typeset -g POWERLEVEL9K_RVM_SHOW_GEMSET=false
+  # Don't show ruby- at the front.
+  typeset -g POWERLEVEL9K_RVM_SHOW_PREFIX=false
+  # Custom icon.
+  # typeset -g POWERLEVEL9K_RVM_VISUAL_IDENTIFIER_EXPANSION='⭐'
 
   ###########[ fvm: flutter version management (https://github.com/leoafarias/fvm) ]############
-  # <--- DELETED BY CUSTOMIZATION ---> SEE DOCS
+  # Fvm color.
+  typeset -g POWERLEVEL9K_FVM_FOREGROUND=38
+  typeset -g POWERLEVEL9K_FVM_BACKGROUND=16
+  # Custom icon.
+  # typeset -g POWERLEVEL9K_FVM_VISUAL_IDENTIFIER_EXPANSION='⭐'
 
   ##########[ luaenv: lua version from luaenv (https://github.com/cehoffman/luaenv) ]###########
-  # <--- DELETED BY CUSTOMIZATION ---> SEE DOCS
+  # Lua color.
+  typeset -g POWERLEVEL9K_LUAENV_FOREGROUND=32
+  typeset -g POWERLEVEL9K_LUAENV_BACKGROUND=16
+  # Hide lua version if it doesn't come from one of these sources.
+  typeset -g POWERLEVEL9K_LUAENV_SOURCES=(shell local global)
+  # If set to false, hide lua version if it's the same as global:
+  # $(luaenv version-name) == $(luaenv global).
+  typeset -g POWERLEVEL9K_LUAENV_PROMPT_ALWAYS_SHOW=false
+  # If set to false, hide lua version if it's equal to "system".
+  typeset -g POWERLEVEL9K_LUAENV_SHOW_SYSTEM=true
+  # Custom icon.
+  # typeset -g POWERLEVEL9K_LUAENV_VISUAL_IDENTIFIER_EXPANSION='⭐'
 
   ###############[ jenv: java version from jenv (https://github.com/jenv/jenv) ]################
-  # <--- DELETED BY CUSTOMIZATION ---> SEE DOCS
+  # Java color.
+  typeset -g POWERLEVEL9K_JENV_FOREGROUND=172
+  typeset -g POWERLEVEL9K_JENV_BACKGROUND=16
+
+  # Hide java version if it doesn't come from one of these sources.
+  typeset -g POWERLEVEL9K_JENV_SOURCES=(shell local global)
+  # If set to false, hide java version if it's the same as global:
+  # $(jenv version-name) == $(jenv global).
+  typeset -g POWERLEVEL9K_JENV_PROMPT_ALWAYS_SHOW=true
+  # If set to false, hide java version if it's equal to "system".
+  typeset -g POWERLEVEL9K_JENV_SHOW_SYSTEM=true
+  # Custom icon.
+  # typeset -g POWERLEVEL9K_JENV_VISUAL_IDENTIFIER_EXPANSION='⭐'
 
   ###########[ plenv: perl version from plenv (https://github.com/tokuhirom/plenv) ]############
-  # <--- DELETED BY CUSTOMIZATION ---> SEE DOCS
-
-  ###########[ perlbrew: perl version from perlbrew (https://github.com/gugod/App-perlbrew) ]############
-  # <--- DELETED BY CUSTOMIZATION ---> SEE DOCS
+  # Perl color.
+  typeset -g POWERLEVEL9K_PLENV_FOREGROUND=67
+  typeset -g POWERLEVEL9K_PLENV_BACKGROUND=16
+  # Hide perl version if it doesn't come from one of these sources.
+  typeset -g POWERLEVEL9K_PLENV_SOURCES=(shell local global)
+  # If set to false, hide perl version if it's the same as global:
+  # $(plenv version-name) == $(plenv global).
+  typeset -g POWERLEVEL9K_PLENV_PROMPT_ALWAYS_SHOW=false
+  # If set to false, hide perl version if it's equal to "system".
+  typeset -g POWERLEVEL9K_PLENV_SHOW_SYSTEM=true
+  # Custom icon.
+  # typeset -g POWERLEVEL9K_PLENV_VISUAL_IDENTIFIER_EXPANSION='⭐'
 
   ############[ phpenv: php version from phpenv (https://github.com/phpenv/phpenv) ]############
-  # <--- DELETED BY CUSTOMIZATION ---> SEE DOCS
+  # PHP color.
+  typeset -g POWERLEVEL9K_PHPENV_FOREGROUND=99
+  typeset -g POWERLEVEL9K_PHPENV_BACKGROUND=16
+  # Hide php version if it doesn't come from one of these sources.
+  typeset -g POWERLEVEL9K_PHPENV_SOURCES=(shell local global)
+  # If set to false, hide php version if it's the same as global:
+  # $(phpenv version-name) == $(phpenv global).
+  typeset -g POWERLEVEL9K_PHPENV_PROMPT_ALWAYS_SHOW=false
+  # If set to false, hide php version if it's equal to "system".
+  typeset -g POWERLEVEL9K_PHPENV_SHOW_SYSTEM=true
+  # Custom icon.
+  # typeset -g POWERLEVEL9K_PHPENV_VISUAL_IDENTIFIER_EXPANSION='⭐'
 
   #######[ scalaenv: scala version from scalaenv (https://github.com/scalaenv/scalaenv) ]#######
   # <--- DELETED BY CUSTOMIZATION ---> SEE DOCS
@@ -810,7 +915,7 @@
 
   ####################################[ time: current time ]####################################
   # Current time color.
-  typeset -g POWERLEVEL9K_TIME_FOREGROUND=0
+  typeset -g POWERLEVEL9K_TIME_FOREGROUND=16
   typeset -g POWERLEVEL9K_TIME_BACKGROUND=15
   # Format for the current time: 09:51:02. See `man 3 strftime`.
   typeset -g POWERLEVEL9K_TIME_FORMAT='%D{%H:%M:%S}'
@@ -891,11 +996,11 @@
     # Show empty line if it's the first prompt in the TTY.
     [[ $P9K_TTY == old ]] && p10k display 'empty_line'=show
     # Show the first prompt line.
-    p10k display '1/left/dir'=show '1/left/vcs'=show '1/gap'=show '1/right/status'=show '1/right/command_execution_time'=show '2/left/prompt_char'=show '2/right/time'=show
+    p10k display '1/left'=show '1/gap'=show '1/right/status'=show '1/right/command_execution_time'=show '2/left/prompt_char'=show '2/right/time'=show 
   }
 
   function p10k-on-post-prompt() { 
-    p10k display '1/left/dir'=hide '1/left/vcs'=hide   
+    p10k display '1/left'=hide 
   }
 
   
