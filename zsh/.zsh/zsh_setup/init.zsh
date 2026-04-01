@@ -5,8 +5,8 @@ setopt APPEND_HISTORY
 setopt SHARE_HISTORY
 
 HISTFILE=~/.config/.zsh/.histfile
-HISTSIZE=999
-SAVEHIST=1000
+HISTSIZE=15000
+SAVEHIST=15000
 
 # expire duplicates first
 setopt HIST_EXPIRE_DUPS_FIRST
