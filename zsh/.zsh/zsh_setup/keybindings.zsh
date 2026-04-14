@@ -1,5 +1,8 @@
 
 
+# This excludes the '/' as a normal character, so that Ctrl + <Movement> or Ctrl + <Deletion> doesnt skip over the entirety of a path
+export WORDCHARS=${WORDCHARS//[\/]/}
+
 # --- IMPORTANT NOTE: the following functionality is distro-dependent due to differences in key codes. ---
 # --- In particular, I will mark the following code to denote whether it works on Ubuntu 22.04 LTS or in my Fedora 38 VM ---
 # --- Update: There are also configs for CachyOS
