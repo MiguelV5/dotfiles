@@ -1,10 +1,32 @@
+bind ^Q   exit          all
+
+bind ^C   copy          main
+bind ^V   paste         main
+bind ^X   cut           main
+bind ^K   zap           main
 bind ^Z undo main
 bind ^Y redo main
+bind ^G   gotoline      all
+bind ^_   firstline     main
+bind M-1    help         all   # fix ^G been used
+
+unbind ^J               main  # for those who rarely use justify
+unbind M-J              main  # for those who rarely use justify
+
 bind ^H chopwordleft main
-bind \e[3;5~ chopwordright main
+#bind ^[[3;5~ chopwordright main # prints error permanently sadly
+
+
 
 set tabsize 4
+set tabstospaces
 set softwrap
 set linenumbers
+set numbercolor black,white
+set scrollercolor cyan,normal
+set afterends       # `Ctrl+Right` move to word ends instead of word starts
+set wordchars "_"   # recognize '_' as part of a word
+set mouse			# enable mouse support
+set zap		 		# delete selected text as a whole
 
-
+include "/usr/share/nano-syntax-highlighting/*.nanorc"
