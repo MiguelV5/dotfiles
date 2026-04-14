@@ -1,5 +1,10 @@
 bind ^Z undo main
 bind ^Y redo main
+bind ^H chopwordleft main
+bind \e[3;5~ chopwordright main
+
 set tabsize 4
 set softwrap
 set linenumbers
+
+
