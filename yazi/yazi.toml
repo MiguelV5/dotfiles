@@ -1,0 +1,61 @@
+[mgr]
+show_hidden = true
+show_symlink = true
+sort_dir_first = true
+linemode = "size"
+
+[preview]
+wrap = "yes"
+tab_size = 2
+max_width = 600
+max_height = 600
+image_delay = 100
+image_filter = "catmull-rom"
+image_quality = 90
+
+[opener]
+vlc_smart = [
+    { run = '''
+        if pgrep -x "vlc" > /dev/null; then
+            for file in "$@"; do
+                abspath=$(realpath "$file")
+                vlc --one-instance --playlist-enqueue "$abspath"
+            done
+        else
+            # if vlc is not running
+            setsid vlc --one-instance --loop --playlist-autostart "$@" >/dev/null 2>&1 &
+        fi
+    ''', desc = "Queue in VLC" }
+]
+
+
+play_video = [
+    { run = 'vlc %s', desc = "Play in VLC", orphan = true }
+]
+
+edit_nano = [
+    { run = 'nano "$@"', desc = "Edit with Nano", block = true }
+]
+
+[open]
+rules = [
+    { mime = "audio/*", use = [ "vlc_smart", "reveal" ] },
+    { name = "*.[mM][pP]3", use = [ "vlc_smart", "reveal" ] },
+    { name = "*.[fF][lL][aA][cC]", use = [ "vlc_smart", "reveal" ] },
+    { name = "*.[mM]4[aA]", use = [ "vlc_smart", "reveal" ] },
+    { name = "*.{opus,ogg,wav}", use = [ "vlc_smart", "reveal" ] },
+
+    { mime = "video/*", use = "play_video" },
+    { name = "*.{mp4,mkv,mov,avi,webm,wmv}", use = "play_video" },
+
+    { mime = "{text/*,application/json,application/javascript,application/x-sh}", use = "edit_nano" },
+    { name = "*.{toml,conf,yaml,yml,md,txt}", use = "edit_nano" },
+]
+
+[plugin]
+previewers = [
+    { mime = "audio/*", run = "video" },
+    { mime = "video/*", run = "video" },
+    { mime = "image/*", run = "image" },
+    { mime = "{text/*,application/json}", run = "code" },
+]
