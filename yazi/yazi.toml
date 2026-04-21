@@ -22,12 +22,10 @@ vlc_smart = [
                 vlc --one-instance --playlist-enqueue "$abspath"
             done
         else
-            # if vlc is not running
             setsid vlc --one-instance --loop --playlist-autostart "$@" >/dev/null 2>&1 &
         fi
     ''', desc = "Queue in VLC" }
 ]
-
 
 play_video = [
     { run = 'vlc %s', desc = "Play in VLC", orphan = true }
@@ -37,8 +35,15 @@ edit_nano = [
     { run = 'nano "$@"', desc = "Edit with Nano", block = true }
 ]
 
+evince = [
+    { run = 'evince "$@"', desc = "Open default pdf viewer", orphan = true }
+]
+
+
+
 [open]
 rules = [
+    { mime = "application/pdf", use = "evince" },
     { mime = "audio/*", use = [ "vlc_smart", "reveal" ] },
     { name = "*.[mM][pP]3", use = [ "vlc_smart", "reveal" ] },
     { name = "*.[fF][lL][aA][cC]", use = [ "vlc_smart", "reveal" ] },
@@ -53,9 +58,7 @@ rules = [
 ]
 
 [plugin]
-previewers = [
-    { mime = "audio/*", run = "video" },
-    { mime = "video/*", run = "video" },
-    { mime = "image/*", run = "image" },
-    { mime = "{text/*,application/json}", run = "code" },
+prepend_previewers = [
+    { mime = "application/pdf", run = "pdf" },
+    { mime = "audio/*", run = "exifaudio" }
 ]
