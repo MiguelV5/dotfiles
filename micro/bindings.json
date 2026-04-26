@@ -1,0 +1,12 @@
+{
+    "Ctrl-w": "DeleteWordLeft", // this is CtrlBackspace but wezterm sends a Ctrl+w as per config
+    "CtrlDelete": "DeleteWordRight",
+    "CtrlLeft": "WordLeft",
+    "CtrlRight": "WordRight",
+    "CtrlShiftLeft": "SelectWordLeft",
+    "CtrlShiftRight": "SelectWordRight",
+    "Ctrl-ShiftUp": "SpawnMultiCursorUp",
+    "Ctrl-ShiftDown": "SpawnMultiCursorDown",
+    "Alt-h": "ToggleHelp",
+    "Ctrl-g": "command-edit:goto"
+} 

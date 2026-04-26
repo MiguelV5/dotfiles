@@ -3,11 +3,18 @@ local config = wezterm.config_builder()
 local act = wezterm.action
 
 
--- =========== Visuals: Hide title bar and auto-hide tab bar ===============
+-- =========== Visuals ===============
+--- Hide title bar and auto-hide tab bar
 config.window_decorations = "RESIZE"
 config.hide_tab_bar_if_only_one_tab = true
+
+--- Cursor
 config.default_cursor_style = 'BlinkingBar'
 config.cursor_thickness = '2px'
+
+--- Initial window size
+config.initial_cols = 130
+config.initial_rows=38
 
 
 -- =========== Colors ===========
@@ -17,10 +24,17 @@ config.colors = {
 
 
 
--- =========== Keys: Replace Alt+Enter with F11 for fullscreen ===========
+-- =========== Keys ===========
 config.keys = {
+  -- Replace Alt+Enter with F11 for fullscreen
   { key = 'Enter', mods = 'ALT', action = act.DisableDefaultAssignment },
   { key = 'F11', action = act.ToggleFullScreen },
+  --  send keytriggers for micro editor: CtrlBackspace, CtrlShiftArrows(Left/Right) for selection, CtrlShiftArrows(Up/Down) for multiple cursor expansion.
+  { key = 'Backspace', mods = 'CTRL', action = act.SendString '\x17' },
+  { key = 'LeftArrow', mods = 'CTRL|SHIFT', action = act.SendString '\x1b[1;6D' },
+  { key = 'RightArrow', mods = 'CTRL|SHIFT', action = act.SendString '\x1b[1;6C' },
+  { key = 'UpArrow', mods = 'CTRL|SHIFT', action = act.SendString '\x1b[1;6A' },
+  { key = 'DownArrow', mods = 'CTRL|SHIFT', action = act.SendString '\x1b[1;6B' },
 }
 
 

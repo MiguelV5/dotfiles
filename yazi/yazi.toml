@@ -31,8 +31,8 @@ play_video = [
     { run = 'vlc %s', desc = "Play in VLC", orphan = true }
 ]
 
-edit_nano = [
-    { run = 'nano "$@"', desc = "Edit with Nano", block = true }
+edit_micro = [
+    { run = 'micro "$@"', desc = "Edit with micro", block = true }
 ]
 
 evince = [
@@ -53,8 +53,8 @@ rules = [
     { mime = "video/*", use = "play_video" },
     { name = "*.{mp4,mkv,mov,avi,webm,wmv}", use = "play_video" },
 
-    { mime = "{text/*,application/json,application/javascript,application/x-sh}", use = "edit_nano" },
-    { name = "*.{toml,conf,yaml,yml,md,txt}", use = "edit_nano" },
+    { mime = "{text/*,application/json,application/javascript,application/x-sh}", use = "edit_micro" },
+    { name = "*.{toml,conf,yaml,yml,md,txt}", use = "edit_micro" },
 ]
 
 [plugin]

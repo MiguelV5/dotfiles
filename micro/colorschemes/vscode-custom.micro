@@ -1,0 +1,38 @@
+color-link default "#FFFFFF,#0F111A"
+color-link comment "#6C736C"
+
+# UI Elements
+color-link statusline "#FFFFFF,#131925"
+color-link tabbar "#FFFFFF,#131925"
+color-link indent-char "#465785"
+color-link line-number "#465785"
+color-link current-line-number "#84A5FB"
+color-link cursor-line "#131925"
+color-link color-column "#131925"
+
+# Syntax Highlighting (Matching VS Code Dark Modern styles)
+color-link identifier "#9CDCFE"
+color-link identifier.class "#67BF7A"
+color-link identifier.var "#9CDCFE"
+color-link statement "#C586C0"
+color-link symbol "#D4D4D4"
+color-link symbol.bracket "#FFD700"
+color-link constant "#569CD6"
+color-link constant.number "#B5CEA8"
+color-link constant.string "#CE9178"
+color-link constant.bool "#569CD6"
+color-link type "#67AD4B"
+color-link special "#DCDCAA"
+color-link preproc "#C586C0"
+color-link underlined "#569CD6"
+color-link error "bold #F44747"
+color-link todo "bold #6C736C"
+
+# Diff colors
+color-link diff-added "#B5CEA8"
+color-link diff-modified "#D7BA7D"
+color-link diff-deleted "#F44747"
+
+# Scrollbar and Gutter
+color-link gutter-error "#F44747"
+color-link gutter-warning "#D7BA7D"

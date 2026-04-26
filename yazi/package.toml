@@ -13,6 +13,11 @@ use = "yazi-rs/plugins:toggle-pane"
 rev = "442d908"
 hash = "4c0260feb50ea2437380690ffc241da7"
 
+[[plugin.deps]]
+use = "Sonico98/exifaudio"
+rev = "4506f9d"
+hash = "4761fffb60a12d37096c34a356380cdf"
+
 [[flavor.deps]]
 use = "dangooddd/kanagawa"
 rev = "04985d1"

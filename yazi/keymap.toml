@@ -29,10 +29,17 @@ on   = [ "<C-n>" ]
 run  = "create"
 desc = "Create a file or directory"
 
+# Additionals:
 [[mgr.prepend_keymap]]
 on   = [ "R" ]
 run  = "rename --hovered"
 desc = "Rename currently hovered file or dir"
+
+[[mgr.prepend_keymap]]
+on   = [ "<C-q>" ]
+run  = "quit"
+desc = "Quit Yazi"
+
 
 # FROM PLUGINS:
 [[mgr.prepend_keymap]]
@@ -44,7 +51,7 @@ desc = "Enter the child directory, or open the file"
 on   = "Q"
 for  = "unix"
 run  = 'shell "$SHELL" --block'
-desc = "Open $SHELL here"
+desc = "(Shift+Q) Quit yazi BUT open $SHELL here"
 
 [[mgr.prepend_keymap]]
 on   = "w"
