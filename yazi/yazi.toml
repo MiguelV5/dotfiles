@@ -16,15 +16,12 @@ image_quality = 90
 [opener]
 vlc_smart = [
     { run = '''
-        if pgrep -x "vlc" > /dev/null; then
-            for file in "$@"; do
-                abspath=$(realpath "$file")
-                vlc --one-instance --playlist-enqueue "$abspath"
-            done
-        else
-            setsid vlc --one-instance --loop --playlist-autostart "$@" >/dev/null 2>&1 &
-        fi
-    ''', desc = "Queue in VLC" }
+            if pgrep -x "vlc" > /dev/null; then
+                vlc --one-instance --playlist-enqueue %s
+            else
+                setsid vlc --one-instance --loop --playlist-autostart %s >/dev/null 2>&1 &
+            fi
+        ''', desc = "Queue in VLC" }
 ]
 
 play_video = [
@@ -32,29 +29,37 @@ play_video = [
 ]
 
 edit_micro = [
-    { run = 'micro "$@"', desc = "Edit with micro", block = true }
+    { run = 'micro %s', desc = "Edit with micro", block = true }
 ]
 
 evince = [
-    { run = 'evince "$@"', desc = "Open default pdf viewer", orphan = true }
+    { run = 'evince %s', desc = "Open default pdf viewer", orphan = true }
+]
+
+loupe = [ 
+	{ run = 'loupe %s', desc = "Loupe Image Viewer", orphan = true }
 ]
 
 
 
 [open]
 rules = [
+    # PDF and Audio
     { mime = "application/pdf", use = "evince" },
     { mime = "audio/*", use = [ "vlc_smart", "reveal" ] },
-    { name = "*.[mM][pP]3", use = [ "vlc_smart", "reveal" ] },
-    { name = "*.[fF][lL][aA][cC]", use = [ "vlc_smart", "reveal" ] },
-    { name = "*.[mM]4[aA]", use = [ "vlc_smart", "reveal" ] },
-    { name = "*.{opus,ogg,wav}", use = [ "vlc_smart", "reveal" ] },
-
+    { url = "*.xspf", use = [ "vlc_smart", "reveal" ] }, # routes vlc-made audio playlists
+    
+    # Video
     { mime = "video/*", use = "play_video" },
-    { name = "*.{mp4,mkv,mov,avi,webm,wmv}", use = "play_video" },
 
+    # Image
+    { mime = "image/*", use = "loupe" },
+
+    # Text / Code
     { mime = "{text/*,application/json,application/javascript,application/x-sh}", use = "edit_micro" },
-    { name = "*.{toml,conf,yaml,yml,md,txt}", use = "edit_micro" },
+    { name = "*.{toml,conf,yaml,yml,md,txt}", mime = "{text/*,application/json,application/javascript,application/x-sh}", use = "edit_micro" },
+
+    { mime = "inode/empty", use = "edit_micro" },
 ]
 
 [plugin]
